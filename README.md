@@ -8,6 +8,8 @@ In Introduction, we used background information about COVID-19 and how the epide
 
 The document structure is given as below in the submitted document:
 
+```
+
 | Abstract
 | Introduction
 |__ Mathematical model
@@ -25,13 +27,15 @@ The document structure is given as below in the submitted document:
 | Limitations
 | Conclusion
 
+```
+
 
 
 ### The main Implemented Mathematical model in three different variations
 In this section, we explained in detail about
 
 The below function varies when alpha1 = 0, alpha2 = 0.5, and alpha1=0.5, alpha2=1, and alpha1=0,alpha2=1
-julia
+```julia
 function model_Simulation1(dxyz,initial_Parameters,p,tspan)
     alpha1,alpha2,beta1,beta2,eta_S,eta_A,b,mu = p
     S,E,IA,IS,R,P = initial_Parameters
@@ -48,12 +52,12 @@ end
 problem1 = ODEProblem(model_Simulation1,intial_Parameters,tspan,p)
 solution1 = solve(problem1)
 plot(solution1)
-
+```
 
 
 #### Finding the reproduction number
 
-julia
+```julia
 C1 = psi + mu + w
 C2 = mu + sigma + gamma_S
 C3 = mu + sigma + gamma_A
@@ -64,9 +68,9 @@ Y = (eta_S*delta*w)/C1*C2
 Z = (eta_A*(1-delta)*w)/C1*C3
 basic_reproduction= (U+V+sqrt((U+V)^2 + X*(Y*Z)))/2
 println(basic_reproduction)
-
+```
 #### for Humans
-julia
+```julia
 C1 = psi + mu + w
 C2 = mu + sigma + gamma_S
 C3 = mu + sigma + gamma_A
@@ -78,11 +82,13 @@ println(humans_Reproduction)
 julia
 pathogens_Reproduction = B*(((eta_S*delta*w)/C2) + ((eta_A*(1-delta)*w)/C3))
 println(pathogens_Reproduction)
-
+```
 #### Results (Reproduction number)
-
+```
 | Given model  | Implemented model |
 | ------------- | ------------- |
 |   2.0  | 0.56  |
+
+```
 
 ![Plot1]()
